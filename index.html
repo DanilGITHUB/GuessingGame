@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Guessing Game</title>
+</head>
+<body>
+
+  <p id="demo"></p>
+
+  <script>
+    // Generate a random number between 1 and 10
+    var randomNumber = Math.floor(Math.random() * 10) + 1;
+    document.getElementById("demo").innerHTML = randomNumber;
+    console.log(randomNumber);
+
+    // Track number of guesses
+    var guessCount = 0;
+    var correct = false;
+
+    // Keep asking until the player guesses correctly
+    while (correct === false)
+    {
+      var userInput = prompt("Guess a Number between 1 and 10.");
+
+      // If the user hits Cancel, stop the game
+      if (userInput === null)
+      {
+        alert("Game over! You gave up.");
+        correct = true;
+      }
+      else
+      {
+        var guess = parseInt(userInput);
+        guessCount = guessCount + 1;
+
+        if (guess > randomNumber)
+        {
+          prompt("Your guess was too high, guess again.");
+        }
+        else if (guess < randomNumber)
+        {
+          prompt("Your guess was too low, guess again.");
+        }
+        else
+        {
+          alert("Your guess was correct! You got it in " + guessCount + " guesses.");
+          correct = true;
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
